@@ -34,7 +34,7 @@ function RademacherAccessory(log, debug, accessory, data, session) {
 
 RademacherAccessory.prototype.getDevice = function(callback) {
     var self = this;
-    self.log('getDevice');
+    if (self.debug) self.log("%s [%s] - getDevice()", self.accessory.displayName, self.blind.did);
     if (this.lastUpdate < Date.now() - 5000) {
         this.session.get("/v4/devices/" + this.did, 30000, function(e, body) {
     		if(e) return callback(new Error("Request failed: "+e), null);
@@ -53,6 +53,7 @@ RademacherAccessory.prototype.getDevice = function(callback) {
     	});
     } else {
         self.log('data is still current');
+        if (self.debug) self.log("%s [%s] - getDevice() - data is still valid", self.accessory.displayName, self.blind.did);
     	callback(null, this.device);
     }
 };
