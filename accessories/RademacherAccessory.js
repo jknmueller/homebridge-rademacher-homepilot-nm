@@ -33,7 +33,7 @@ function RademacherAccessory(log, debug, accessory, data, session) {
 }
 
 RademacherAccessory.prototype.getDevice = function(callback) {
-    if (this.lastUpdate < Date.now()) {
+    if (this.lastUpdate < Date.now() + 2000) {
         var self = this;
         this.session.get("/v4/devices/" + this.did, 30000, function(e, body) {
     		if(e) return callback(new Error("Request failed: "+e), null);
