@@ -51,6 +51,7 @@ RademacherAccessory.prototype.getDevice = function(callback) {
             }
     	});
     } else {
+        self.log('data is still current');
     	callback(null, this.device);
     }
 };
