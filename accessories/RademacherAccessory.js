@@ -36,7 +36,6 @@ RademacherAccessory.prototype.getDevice = function(callback) {
     var self = this;
     if (self.debug) self.log("%s [%s] - getDevice() - lastUpdate: %s - Now: %s", self.accessory.displayName, self.blind.did, this.lastUpdate, Date.now() );
     if (this.lastUpdate < Date.now() - 5000) {
-        self.lastUpdate = Date.now();
         this.session.get("/v4/devices/" + this.did, 30000, function(e, body) {
     		if(e) return callback(new Error("Request failed: "+e), null);
             if (body && (body.hasOwnProperty("device") || body.hasOwnProperty("meter")))
