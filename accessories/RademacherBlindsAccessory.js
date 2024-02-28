@@ -132,7 +132,7 @@ RademacherBlindsAccessory.prototype.update = function() {
             if (self.debug) self.log(`%s [%s] - update().getTargetPosition(): enw position=%s`, self.accessory.displayName, self.blind.did, pos);
         }
     }.bind(this));
-    
+    await new Promise(resolve => setTimeout(resolve, 1000));
     // Position
     this.getObstructionDetected(function(err, obstructionDetected) {
         if (err)
