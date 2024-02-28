@@ -34,7 +34,7 @@ function RademacherBlindsAccessory(log, debug, accessory, blind, session, invert
         .setValue(this.blind.hasErrors)
         .on('get', this.getObstructionDetected.bind(this));
     // TODO configure interval
-    setInterval(this.update.bind(this), 40000);
+    setInterval(this.update.bind(this), 20000);
 }
 
 RademacherBlindsAccessory.prototype = Object.create(RademacherAccessory.prototype);
